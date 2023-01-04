@@ -30,11 +30,11 @@ jobs:
         run: poetry install --no-interaction --no-root
       - name: Run Tests
         run: make test-ci
-      - name: Upload coverage to Codecov
-        if: ${{ matrix.python-version==3.9 }}
-        uses: codecov/codecov-action@v3
-        with:
-          # token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.xml
-          fail_ci_if_error: true
+      # - name: Upload coverage to Codecov
+      #   if: ${{ matrix.python-version==3.9 }}
+      #   uses: codecov/codecov-action@v3
+      #   with:
+      #     # token: ${{ secrets.CODECOV_TOKEN }}
+      #     file: ./coverage.xml
+      #     fail_ci_if_error: true
 
