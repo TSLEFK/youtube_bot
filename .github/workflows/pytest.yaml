@@ -27,7 +27,7 @@ jobs:
       - name: Add path for Poetry
         run: echo "$HOME/.poetry/bin" >> $GITHUB_PATH
       - name: Install Dependencies
-        run: poetry install --no-interaction
+        run: poetry install --no-interaction --no-root
       - name: Run Tests
         run: make test-ci
       - name: Upload coverage to Codecov
