@@ -1,0 +1,23 @@
+{
+    "recommendations": [
+        "amazonwebservices.aws-toolkit-vscode",
+        "donjayamanne.python-extension-pack",
+        "esbenp.prettier-vscode",
+        "hediet.vscode-drawio",
+        "ms-python.isort",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-vscode.makefile-tools",
+        "ms-vsliveshare.vsliveshare",
+        "njpwerner.autodocstring",
+        "redhat.vscode-yaml",
+        "shardulm94.trailing-spaces",
+        "streetsidesoftware.code-spell-checker",
+        "visualstudioexptteam.vscodeintellicode",
+        "vscode-icons-team.vscode-icons",
+        "yzhang.markdown-all-in-one"
+    ],
+    "unwantedRecommendations": [
+        "tht13.python"
+    ]
+}

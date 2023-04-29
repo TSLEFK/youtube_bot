@@ -7,12 +7,12 @@ readme = "README.md"
 packages = [{include = "youtube_bot"}]
 
 [tool.poetry.dependencies]
-python = "^3.9,<3.10"
+python = "^3.9,<3.11"
 aws-lambda-powertools = "^2.5.0"
 requests = "^2.28.1"
 aws-cdk-lib = "^2.59.0"
 jmespath = "^1.0.1"
-
+google-api-python-client = "^2.71.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.12.0"
@@ -21,16 +21,25 @@ flake8 = "^6.0.0"
 rope = "^1.6.0"
 pytest-cov = "^4.0.0"
 pydocstyle = "^6.2.2"
+bandit = "^1.7.4"
+types-requests = "^2.28.11.7"
+aws-lambda-powertools = {extras = ["aws-sdk"], version = "^2.5.0"}
+isort = "^5.12.0"
+pyproject-flake8 = "^6.0.0.post1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.bandit]
+exclude_dirs = ["venv", "cdk/tests"]
 
 [tool.black]
 target-version = ['py39']
 line-length = 119
 
 [tool.isort]
+profile = "black"
 line_length = 119
 multi_line_output = 3
 include_trailing_comma = true
@@ -48,6 +57,7 @@ ignore_missing_imports = true
 check_untyped_defs = true
 
 [tool.pytest.ini_options]
-testpaths = ["cdk/tests",]
+testpaths = ["tests"]
 addopts = "-ra -q -vv -s --ff --doctest-modules --cov=cdk/src --cov-report=html --cov-fail-under=80"
 filterwarnings = ["ignore::DeprecationWarning",]
+pythonpath = ["src", "cdk"]

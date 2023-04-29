@@ -35,5 +35,10 @@
     "@aws-cdk/aws-iam:standardizedServicePrincipals": true,
     "@aws-cdk/aws-ecs:disableExplicitDeploymentControllerForCircuitBreaker": true,
     "@aws-cdk/aws-s3:serverAccessLogsUseBucketPolicy": true
-  }
+  },
+  "default": {
+    "lambda_timeout_seconds": 300
+  },
+  "dev": {},
+  "prd": {}
 }
