@@ -6,7 +6,7 @@ from aws_lambda_powertools import Logger
 from aws_lambda_powertools.utilities.parameters import get_parameter
 from googleapiclient.discovery import build
 
-API_KEY_NAME = os.environ["API_KEY_NAME"]  # "AIzaSyAu1lmcvmr42EF5UuJaK8CI6fMpK568X2I"
+API_KEY_NAME = os.environ["API_KEY_NAME"]
 
 logger = Logger(child=True)
 
@@ -17,7 +17,6 @@ class YoutubeClient:
     Returns:
         _type_: YT Client class.
     """
-
     def __init__(self) -> None:
         """Initialize youtube instance."""
         self.client = build(
@@ -26,7 +25,8 @@ class YoutubeClient:
             developerKey=get_parameter(name=API_KEY_NAME, decrypt=True),
         )
 
-    def _execute_channel_statics(self, channel_id: str):
+    def _execute_channel_statics(self, channel_id: str) -> dict[str, Any]:
+        # https://developers.google.com/youtube/v3/docs/channels?hl=ja#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E8%A1%A8%E7%8F%BE
         return self.client.channels().list(part="statistics", id=channel_id).execute()
 
     def get_subscribe_count(self, channel_id) -> int:
@@ -42,7 +42,7 @@ class YoutubeClient:
 
         subscriber_counts = [
             item.get("statistics", {}).get("subscriberCount")
-            for item in statics_response.get("items", [])
+            for item in statics_response.get("items", {})
             if item["kind"] == "youtube#channel"
         ]
 
